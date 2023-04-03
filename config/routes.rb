@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post "/login", to: "session#create"
   get "/me", to: "users#show"
   delete "/logout", to: "session#destroy"
+  delete "/categories", to: "category#destroy"
+  post "/categories", to: "category#create"
   get '/check', to: "session#check"
 
   # post "/login", to: "users#login"

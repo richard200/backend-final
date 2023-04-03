@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   get '/check', to: "session#check"
 
   # post "/login", to: "users#login"
-  # post '/register', to: 'users#create'
+  post '/register', to: 'users#create'
 end

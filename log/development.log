@@ -18357,3 +18357,92 @@ Processing by UsersController#show as */*
 Completed 200 OK in 18ms (Views: 12.8ms | ActiveRecord: 0.5ms | Allocations: 3811)
 
 
+Started POST "/register" for 127.0.0.1 at 2023-04-03 05:52:27 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/register"):
+  
+Started POST "/register" for 127.0.0.1 at 2023-04-03 05:52:53 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"richie", "email"=>"rich@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"richie", "email"=>"rich@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f58f485d8e8>, params: {"username"=>"richie", "email"=>"rich@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"richie", "email"=>"rich@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:41:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "richie"], ["email", "rich@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-04-03 02:52:54.431809"], ["updated_at", "2023-04-03 02:52:54.431809"]]
+  ↳ app/controllers/users_controller.rb:41:in `create'
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:41:in `create'
+[active_model_serializers]   [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."user_id" = ?[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:43:in `create'
+[active_model_serializers]   [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:43:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (29.77ms)
+Completed 201 Created in 329ms (Views: 43.8ms | ActiveRecord: 7.3ms | Allocations: 57203)
+
+
+Started GET "/me" for 127.0.0.1 at 2023-04-03 05:54:10 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as */*
+  Parameters: {"username"=>"richie", "email"=>"rich@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"richie", "email"=>"rich@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."user_id" = ?[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:20:in `show'
+[active_model_serializers]   [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:20:in `show'
+[active_model_serializers] No serializer found for resource: #<Review id: 1, rating: 2, user_id: 12, recipe_id: 6, created_at: "2023-04-02 13:41:29.458044000 +0000", updated_at: "2023-04-02 13:41:29.458044000 +0000">
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (52.76ms)
+Completed 200 OK in 159ms (Views: 63.4ms | ActiveRecord: 3.2ms | Allocations: 87337)
+
+
+Started POST "/register" for 127.0.0.1 at 2023-04-03 05:54:30 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"richie", "email"=>"rich@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"richie", "email"=>"rich@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f0e0c00ea30>, params: {"username"=>"richie", "email"=>"rich@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"richie", "email"=>"rich@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:41:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "richie"], ["email", "rich@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-04-03 02:54:30.580592"], ["updated_at", "2023-04-03 02:54:30.580592"]]
+  ↳ app/controllers/users_controller.rb:41:in `create'
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:41:in `create'
+[active_model_serializers]   [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."user_id" = ?[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:43:in `create'
+[active_model_serializers]   [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:43:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.23ms)
+Completed 201 Created in 221ms (Views: 6.7ms | ActiveRecord: 4.2ms | Allocations: 4235)
+
+
+Started POST "/register" for 127.0.0.1 at 2023-04-03 05:59:00 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"richie", "email"=>"rich@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"richie", "email"=>"rich@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f0e0407cd80>, params: {"username"=>"richie", "email"=>"rich@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"richie", "email"=>"rich@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:41:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "richie"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "rich@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:41:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 422 Unprocessable Entity in 223ms (Views: 2.4ms | ActiveRecord: 1.8ms | Allocations: 8334)
+
+
+Started POST "/register" for 127.0.0.1 at 2023-04-03 06:02:29 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"richie", "email"=>"rich@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"richie", "email"=>"rich@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fa8249e3878>, params: {"username"=>"richie", "email"=>"rich@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"richie", "email"=>"rich@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:41:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "richie"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "rich@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:41:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 422 Unprocessable Entity in 307ms (Views: 1.7ms | ActiveRecord: 1.3ms | Allocations: 43620)
+
+
